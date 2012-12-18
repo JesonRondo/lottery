@@ -1,6 +1,6 @@
 /**
  * @plugin  jquery.lottery.js
- * @verison v1.0
+ * @verison v1.1
  * @desc    lottery images frap display
  * @author  LongZhou
  * @mail    pancnlz@gmail.com
@@ -23,6 +23,13 @@
         $target.append($img);
     };
 
+    var preLoad = function() {
+        var img = new Image(0, 0);
+        for (var key in settings.process_img) {
+            img.src = settings.process_img[key];
+        }
+    };
+
     $.fn.lotteryInit = function(options) {
         settings = $.extend(settings, options);
 
@@ -43,6 +50,8 @@
             step = settings.process_img.length;
             // init display
             initDisplay();
+            // pre load images
+            preLoad();
         };
         
         return this.each(function() {
