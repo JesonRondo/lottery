@@ -103,7 +103,7 @@
 
                 var timestep = nowspeed;
 
-                var stopline = (slowsp - 1) / depart * (depart - 1);
+                var stopline = (slowsp - 1) / depart * (depart - 2);
                 var curline = 0;
 
                 var slowAnimate = function(stop_flag) {
