@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lottery Demo</title>
+</head>
+<body>
+    <div id="lotbox"></div>
+
+    <a href="javascript:void(0);" id="lottery">lottery</a>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.lottery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // init
+            $('#lotbox').lotteryInit({
+                process_img: [
+                    'images/1.jpg',
+                    'images/2.jpg',
+                    'images/3.jpg',
+                    'images/4.jpg',
+                    'images/5.jpg',
+                    'images/6.jpg'
+                ]
+            });
+
+            $('#lottery').click(function() {
+                $.lotteryStart(2);
+            });
+        });
+    </script>
+</body>
+</html>
