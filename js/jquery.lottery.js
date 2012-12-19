@@ -1,6 +1,6 @@
 /**
  * @plugin  jquery.lottery.js
- * @verison v1.1
+ * @verison v1.2
  * @desc    lottery images frap display
  * @author  LongZhou
  * @mail    pancnlz@gmail.com
@@ -59,8 +59,14 @@
         });
     };
 
-    $.lotteryStart = function(result) {
+    $.lotteryStart = function(result, callback) {
         settings.result = result;
+        
+        var hasCallback = false;
+        
+        if (callback !== undefined && typeof callback === 'function') {
+            hasCallback = true;
+        }
 
         var validity =  function() {
             // error result change to last status
@@ -109,6 +115,11 @@
                 var slowAnimate = function(stop_flag) {
                     if (curline > stopline) {
                         if (cur_stauts === settings.result) {
+                            if (hasCallback) {
+                                callback();
+                                hasCallback = false;
+                            }
+                        
                             return;
                         }
                     }
