@@ -69,12 +69,8 @@
         }
 
         var validity =  function() {
-            // error result change to last status
-            if (settings.result >= step) {
-                settings.result = step - 1;
-            }
-            // needn't lottery
-            if (settings.result === 0) {
+            // not in range
+            if (typeof settings.result !== 'number' || settings.result < 0 || settings.result >= step) {
                 return false;
             }
             return true;
